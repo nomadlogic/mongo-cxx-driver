@@ -92,10 +92,13 @@ clientSourceSasl = ['mongo/client/sasl_client_authenticate_impl.cpp',
 
 clientSourceAll = clientSourceBasic + clientSourceSasl
 
-if env['MONGO_BUILD_SASL_CLIENT']:
-    clientSource = clientSourceAll
-else:
-    clientSource = clientSourceBasic
+# A3: Temp disable SASL until we can update the mongo cxx driver
+# 	pwright@
+#if env['MONGO_BUILD_SASL_CLIENT']:
+#    clientSource = clientSourceAll
+#else:
+#    clientSource = clientSourceBasic
+clientSource = clientSourceBasic
 
 exampleSourceMap = [
         ('authTest', 'mongo/client/examples/authTest.cpp'),
